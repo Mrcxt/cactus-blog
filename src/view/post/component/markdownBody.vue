@@ -1,18 +1,23 @@
 
 <template>
-	<div class="markdown_body" v-html="body_html"></div>
+	<div v-html="html" class="markdown_body"></div>
 </template>
 
-<script setup>
-	import { defineProps, ref } from "vue";
+<script>
+	import { defineComponent, computed, toRefs, watchEffect } from "vue";
 	import marked from "@/util/marked";
-	import "@/style/markdown/basic.less";
+	import "@/util/marked/style/index.less";
 
-	const { body } = defineProps({
-		body: String,
+	export default defineComponent({
+		props: {
+			md: String,
+		},
+		setup(props, ctx) {
+			const html = computed(() => marked(props.md));
+
+			return { html };
+		},
 	});
-
-	const body_html = marked(body);
 </script>
 
 <style lang="less" scoped>

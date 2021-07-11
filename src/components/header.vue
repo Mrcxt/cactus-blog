@@ -20,18 +20,6 @@
 		</div>
 	</div>
 	<div class="md:hidden">
-		<!-- <a-collapse :bordered="false">
-			<template #expandIcon="props">
-				<MenuOutlined :style="{color:'var(--main-color)'}" />
-			</template>
-			<a-collapse-panel key="1">
-				<ul>
-					<li v-for="(item) in routerPath" :key="item.path">
-						<router-link class="block" :to="{name:item.name}">{{item.name}}</router-link>
-					</li>
-				</ul>
-			</a-collapse-panel>
-		</a-collapse> -->
 		<div class="p-5 m-header">
 			<div class="text-right">
 				<MenuOutlined :style="{color:'var(--main-color)'}" class="text-xl" @click="toggleNavClass" />
@@ -67,7 +55,6 @@
 <style lang="less" scoped>
 	.header {
 		display: flex;
-		margin-bottom: 20px;
 		align-items: center;
 
 		.logo {

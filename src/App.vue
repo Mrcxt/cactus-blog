@@ -4,10 +4,6 @@
 </template>
 
 <script setup>
-	//
-	import Header from "./components/header.vue";
-	import Footer from "./components/footer.vue";
-	import Theme from "./components/theme.vue";
 	import { getUserInfo, getIssues } from "@/api";
 	import { useStore } from "vuex";
 
@@ -19,10 +15,12 @@
 </script>
 
 <style  lang="less">
+	html {
+		font-size: 16px;
+	}
 	body {
-		position: absolute;
-		width: 100%;
-		height: 100%;
+		width: 100vw;
+		height: 100vh;
 		display: flex;
 		// background-color: #f4f5f5;
 	}
@@ -32,7 +30,6 @@
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
 
-		font-size: 14px;
 		color: var(--text-color);
 		flex: auto;
 		max-width: 960px;

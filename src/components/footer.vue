@@ -18,7 +18,6 @@
 	import { format } from "date-fns";
 
 	const router = useRouter();
-	console.log(router);
 </script>
 
 <style lang="less" scoped>

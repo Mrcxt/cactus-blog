@@ -1,43 +1,61 @@
 <template>
 	<div class="post">
-		<Header />
 		<div class="p-5 view">
 			<Article :post_res="post_res" />
-			<Sidebar :post_res="post_res" />
+			<div class="sidebar">
+				<Anchor class="p-5" />
+			</div>
 		</div>
-		<Footer />
 	</div>
 </template>
 
-<script setup>
-	import Footer from "@/components/footer.vue";
-	import Header from "@/components/header.vue";
+<script>
 	import Article from "./component/article.vue";
-	import Sidebar from "./component/sidebar.vue";
+	import Anchor from "./component/anchor.vue";
 
-	import { reactive, onBeforeMount, computed, watch } from "vue";
+	import { reactive, onBeforeMount, computed, watch, defineComponent } from "vue";
 	import { useRoute } from "vue-router";
 	import { getIssueDetails } from "@/api/index.js";
 
-	const route = useRoute();
+	export default defineComponent({
+		components: {
+			Article,
+			Anchor,
+		},
+		setup(props) {
+			const route = useRoute();
 
-	const post_res = reactive({});
+			const post_res = reactive({});
 
-	onBeforeMount(async () => {
-		await getIssueDetails(route.params.id).then((res) => {
-			Object.assign(post_res, res);
-		});
+			onBeforeMount(async () => {
+				await getIssueDetails(route.params.id).then((res) => {
+					Object.assign(post_res, res);
+				});
+			});
+
+			return {
+				post_res,
+			};
+		},
 	});
 </script>
 
 <style lang="less" scoped>
 	.post {
-		display: flex;
-		flex-direction: column;
 		.view {
 			display: flex;
 			flex: 1;
 			justify-content: space-between;
+		}
+
+		.sidebar {
+			width: 200px;
+			margin-left: 20px;
+		}
+		@media screen and (max-width: 960px) {
+			.sidebar {
+				display: none;
+			}
 		}
 	}
 </style>

@@ -2,7 +2,7 @@
     "name": "cactus_blog",
     "version": "0.0.1",
     "scripts": {
-        "dev": "vite",
+        "dev": "vite --host",
         "build": "vite build",
         "serve": "vite preview",
         "publish": "node script/publish.js",
@@ -12,28 +12,45 @@
     "dependencies": {
         "@ant-design/icons-vue": "^6.0.1",
         "ant-design-vue": "2.1.6",
+        "array-to-tree": "^3.3.2",
         "axios": "^0.21.1",
         "date-fns": "^2.22.1",
         "highlight.js": "^11.0.1",
-        "markdown-it": "^12.0.6",
         "marked": "^2.0.7",
         "normalize.css": "^8.0.1",
         "randomcolor": "^0.6.2",
+        "smart-arraytotree": "^1.1.2",
         "timeago.js": "^4.0.2",
         "vue": "^3.1.1",
         "vue-router": "^4.0.8",
         "vuex": "^4.0.1"
     },
     "devDependencies": {
+        "@commitlint/cli": "^12.1.4",
+        "@commitlint/config-conventional": "^12.1.4",
         "@vitejs/plugin-vue": "^1.2.3",
         "@vue/compiler-sfc": "^3.0.5",
         "autoprefixer": "^10.2.6",
+        "cz-conventional-changelog": "3.3.0",
         "gh-pages": "^3.1.0",
+        "gray-matter": "^4.0.3",
+        "husky": "^7.0.0",
         "less": "^4.1.1",
         "postcss": "^8.3.4",
         "rollup-plugin-visualizer": "^5.5.0",
         "tailwindcss": "^2.1.4",
         "vite": "^2.1.5",
-        "vite-plugin-imp": "^2.0.5"
+        "vite-plugin-imp": "^2.0.5",
+        "vite-plugin-style-import": "^1.0.1"
+    },
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-conventional-changelog"
+        }
+    },
+    "husky": {
+        "hooks": {
+            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+        }
     }
 }
